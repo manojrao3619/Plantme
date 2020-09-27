@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+
+<head>
+	<title>PlantMe</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Plantme" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--// Meta tag Keywords -->
+
+	<!-- Custom-Files -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap_modal.css' %}">
+	<!-- <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"> -->
+	<!-- Bootstrap-Core-CSS -->
+	<link href="{% static 'css/css_slider.css' %}" type="text/css" rel="stylesheet" media="all">
+	<!-- banner slider -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+
+	<!-- Web-Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"
+	 rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Niconne&amp;subset=latin-ext" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
+	 rel="stylesheet">
+	<!-- //Web-Fonts -->
+
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+	<div class="modal fade" tabindex="-1" id="myModal1" role="dialog" >
+		<div class="modal-dialog" role="document">					      
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header" style="padding:35px 50px; ">
+					<button type="button" id="cls2" class="close" data-dismiss="modal">&times;</button>
+					<h4 id="mdlttl"><span class="fa fa-lock"></span> Login</h4>
+				</div>
+				<div class="modal-body" style="padding:40px 50px;">
+					<form role="form" action="." method="POST">{% csrf_token %}
+						<div class="form-group" >
+						    <label for="usrname"><span class="fa fa-user"></span> Username</label>
+						    <input type="text" class="form-control" id="username" name="username"placeholder="Enter username">
+						</div>
+
+						<div class="form-group">
+						    <label for="psw"><span class="fa fa-eye"></span> Password</label>
+						    <input type="password" class="form-control" name="password" id="psw" placeholder="Enter password">
+						</div>
+						        
+						<button name="login" id="lgnbtn" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+					</form>
+				</div>
+
+				<div class="modal-footer">
+					<p>Not a member? <a id = "lnk1" href="#" data-toggle="modal"data-target="		#myModal2" data-dismiss="modal">Sign Up</a></p>
+					 <p>Forgot <a href="#">Password?</a></p>
+				</div>
+			</div>
+					        
+		</div>
+	</div>
+
+	<div class="modal fade" tabindex="-1" id="myModal2" role="dialog">
+		<div class="modal-dialog">
+					      
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header" style="padding:35px 50px;">
+					<button type="button" class="close" id="cls1" data-dismiss="modal">&times;</button>
+					<h4 id="mdlttl2" ><span class="fa fa-lock"></span> Sign Up</h4>
+				</div>
+
+				<div class="modal-body" style="padding:40px 50px;">
+					<form role="form" action="." method="POST">{% csrf_token %}
+						<div class="form-group">
+							<label for="firstname"> First Name</label>
+							<input type="text" class="form-control" name="first_name" id="fstname" placeholder="Enter first name">
+						</div>
+
+						<div class="form-group">
+							<label for="lstname"> Last Name</label>
+							<input type="text" class="form-control" name="last_name" id="lstname" placeholder="Enter last name">
+						</div>
+
+						<div class="form-group">
+							<label for="usrname"> Username</label>
+							<input type="text" class="form-control" name="username" id="usrname" placeholder="Enter desired username">
+						</div>
+
+						<div class="form-group">
+							<label for="email"> Email</label>
+							<input type="text" class="form-control" name="email" id="email" placeholder="Enter email">
+						</div>
+
+						<div class="form-group">
+							<label for="phone"> Phone No</label>
+							<input type="text" class="form-control"  name="phone" id="phone" placeholder="Enter Phone No">
+						</div>
+
+						<div class="form-group">
+							<label for="psw"> Password</label>
+							<input type="password" class="form-control" name="password" id="psw" placeholder="Enter password">
+						</div>
+
+						<div class="form-group">
+							<label for="psw"> Repeat Password</label>
+							<input type="password" class="form-control" id="psw" placeholder="Re-Enter password">
+						</div>
+
+						<button name="signup" id="snpbtn" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Sign Up</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<p>Already a member? <a id="lnk2" href="#" data-toggle="modal" data-target="#myModal1" data-dismiss="modal">Login</a></p>
+					</div>
+				</div>		        
+			</div>
+		</div>
+	</div><!--end modal-->
+
+					    
+	<div id="home">
+		<!-- header -->
+		<header class="header-style fixed-top">
+			<div class="container">
+				<div class="header d-lg-flex justify-content-between align-items-center">
+					<!-- logo -->
+					<h1 class="logo text-center">
+						<a href="/">Plantme<i class="fa fa-pagelines" aria-hidden="true"></i>
+						</a>
+					</h1>
+					<!-- //logo -->
+					<!-- nav -->
+					<div class="nav_w3ls">
+						<nav>
+							<ul class="menu">
+								<li><a href="/">Home</a></li>
+								<li><a href="/about">About Us</a></li>
+								<li class="active ml-0"><a href="/products">Products</a></li>
+								<li class="mr-0"><a href="/contact">Contact Us</a></li>
+							</ul>
+						</nav>
+					</div>
+					<!-- //nav -->
+
+					<div style="position: absolute; top: 20px; left: 5px;">
+						{% if user.is_authenticated %}
+							<h3>Welcome, {{ user }} </h3>
+						{% endif %}
+					</div>
+
+					<div class="header__top__right__auth">
+						{% if user.is_authenticated %}
+							<form name="logout" action="." method="POST"> {% csrf_token %}
+								<button class="btn btn-danger" name="logout" id="myBtn2" type="submit" href="#" ><i class="fa fa-user"> Logout</i> </button>
+							</form>
+							
+						{% else %}
+							<button class="btn btn-primary" id="myBtn1" href="#" data-toggle="modal" data-target="#myModal1"><i class="fa fa-user"> Login</i> </button>
+						{% endif %}
+					</div>
+				
+
+				    <div style="position: absolute;top: 25px;right: 15px;">
+				    	<button type="button" class="btn btn-primary fa fa-cart-plus" data-toggle="modal" data-target="#cart"> (<span class="total-count"></span>)</button>
+				    </div>
+
+				</div>
+			</div>
+		</header>
+		<!-- //header -->
+	</div>
+	<!-- //main -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+
+	      </div>
+	      <div class="modal-body">
+	        <table class="show-cart table">
+	          
+	        </table>
+	        <div>Total price: ₹<span class="total-cart"></span></div>
+	      </div>
+	      <div class="modal-footer">
+	      	 <button class="clear-cart btn btn-danger">Clear Cart</button>
+	        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+	        <a type="button"  class="btn btn-primary" href="/checkout" onclick="checkout();">Order now</a>	
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<script >
+
+
+		function checkout() {
+			crt = []
+			crt = JSON.parse(sessionStorage.getItem('shoppingCart'));
+			var total_price = 0;
+    		for(i = 0; i < crt.length; i++) {
+    			total_price += ((cart[i].price) * (cart[i].count));
+    		}
+    		sessionStorage.setItem('totalPrice', JSON.stringify(total_price));
+		}
+	</script>
+		
+	<div class="stats-info py-5">
+		<div class="container py-xl-5 py-lg-3">
+			<h4 class="stat-text-wthree text-wh mx-auto text-center font-italic mb-sm-5 mb-4">We give you best quality plants and also best services</h4>
+		</div>
+	</div>
+
+	{% block content %}
+	<div id="all" class="shop-container">
+	    {% for plant in plants %}
+		<div class="card" style="width:250px">
+			<a href="{{ plant.get_absolute_url }}"><img class="card-img-top" src="{{ plant.image.url }}" alt="Card image" style="width:100%"></a>
+		    <div class="card-body">
+		    	<h4 class="card-title">{{ plant.plant_name }}</h4>
+		    	<p class="card-text">₹ {{ plant.price }}</p>
+
+		    	{% if user.is_authenticated %}
+		    		<a href="#" data-name="{{ plant.plant_name }}" data-price="{{ plant.price }}" class="add-to-cart btn btn-primary fa fa-cart-plus" style="position: relative; left: 80%;"></a>
+		    	{% else %}
+		    		<a href="#" onclick="alrt();" class="btn btn-primary fa fa-cart-plus" style="position: relative; left: 80%;"></a>
+
+		    	{% endif %}
+		    </div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div id="flr" class="shop-container" style="display: none">
+		{% for flower in flowers %}
+		<div class="card" style="width:250px">
+			<a href="{{ flower.get_absolute_url }}"><img class="card-img-top" src="{{ flower.image.url }}" alt="Card image" style="width:100%"></a>
+			<div class="card-body">
+				<h4 class="card-title">{{ flower.plant_name }}</h4>
+				<p class="card-details">₹ {{ flower.price }}</p>
+
+				{% if user.is_authenticated %}
+		    		<a href="#" data-name="{{ flower.plant_name }}" data-price="{{ flower.price }}" class="add-to-cart btn btn-primary fa fa-cart-plus" style="position: relative; left: 80%;"></a>	
+		    	{% else %}
+		    		<a href="#" onclick="alrt();" class="btn btn-primary fa fa-cart-plus" style="position: relative; left: 80%;"></a>	
+		    	{% endif %}
+		    </div>
+		</div>
+		    {% endfor %}
+	</div>
+
+	<div id="frt" class="shop-container" style="display: none;">
+		{% for fruit in fruits %}
+		<div class="card" style="width:250px">
+			<a href="{{ fruit.get_absolute_url }}"><img class="card-img-top" src="{{ fruit.image.url }}" alt="Card image" style="width:100%"></a>
+		    <div class="card-body">
+		    	<h4 class="card-title">{{ fruit.plant_name }}</h4>
+		    	<p class="card-details">₹ {{ fruit.price }}</p>
+		    	{% if user.is_authenticated %}
+		    		<a href="#" data-name="{{ fruit.plant_name }}" data-price="{{ fruit.price }}" class="add-to-cart btn btn-primary fa fa-cart-plus" style="position: relative; left: 80%;"></a>
+		    	{% else %}
+		    		<a href="#" onclick="alrt();" class="btn btn-primary fa fa-cart-plus" style="position: relative; left: 80%;"></a>	
+		    	{% endif %}
+		    </div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div id="vgtbl" class="shop-container" style="display: none;">
+		{% for vegetable in vegetables %}
+		<div class="card" style="width:250px">
+			<a href="{{ vegetable.get_absolute_url }}"><img class="card-img-top" src="{{ vegetable.image.url }}" alt="Card image" style="width:100%"></a>
+		    <div class="card-body">
+		    	<h4 class="card-title">{{ vegetable.plant_name }}</h4>
+		    	<p class="card-details">₹ {{ vegetable.price }}</p>
+		    	{% if user.is_authenticated %}
+		    		<a href="#" data-name="{{ vegetable.plant_name }}" data-price="{{ vegetable.price }}" class="add-to-cart btn btn-primary fa fa-cart-plus" style="position: relative; left: 80%;"></a>
+		    	{% else %}
+		    		<a href="#" onclick="alrt();" class="btn btn-primary fa fa-cart-plus" style="position: relative; left: 80%;"></a>	
+		    	{% endif %}
+		    </div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div id="mdcnl" class="shop-container" style="display: none;">
+		{% for medicinal in medicinals %}
+		<div class="card" style="width:250px">
+			<a href="{{ medicinal.get_absolute_url }}"><img class="card-img-top" src="{{ medicinal.image.url }}" alt="Card image" style="width:100%"></a>
+		    <div class="card-body">
+		    	<h4 class="card-title">{{ medicinal.plant_name }}</h4>
+		    	<p class="card-details">₹ {{ medicinal.price }}</p>
+		    	{% if user.is_authenticated %}
+		    		<a href="#" data-name="{{ medicinal.plant_name }}" data-price="{{ medicinal.price }}" class="add-to-cart btn btn-primary fa fa-cart-plus" style="position: relative; left: 80%;"></a>
+		    	{% else %}
+		    		<a href="#" onclick="alrt();" class="btn btn-primary fa fa-cart-plus" style="position: relative; left: 80%;"></a>	
+		    	{% endif %}
+		    </div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div id="dcrtv" class="shop-container" style="display: none;">
+		{% for decorative in decoratives %}
+		<div class="card" style="width:250px">
+			<a href="{{ decorative.get_absolute_url }}"><img class="card-img-top" src="{{ decorative.image.url }}" alt="Card image" style="width:100%"></a>
+		    <div class="card-body">
+		    	<h4 class="card-title">{{ decorative.plant_name }}</h4>
+		    	<p class="card-details">₹ {{ decorative.price }}</p>
+		    	{% if user.is_authenticated %}
+		    		<a href="#" data-name="{{ decorative.plant_name }}" data-price="{{ decorative.price }}" class="add-to-cart btn btn-primary fa fa-cart-plus" style="position: relative; left: 80%;"></a>
+		    	{% else %}
+		    		<a href="#" onclick="alrt();" class="btn btn-primary fa fa-cart-plus" style="position: relative; left: 80%;"></a>	
+		    	{% endif %}
+		    </div>
+		</div>
+		{% endfor %}
+	</div>
+	{% endblock %}
+
+	<script type="text/javascript">
+		function showDiv(id) {
+			document.getElementById('all').style.display="none";
+			
+			var arr = ['flr', 'frt', 'vgtbl', 'mdcnl', 'dcrtv'];
+			len = arr.length;
+			for (i = 0; i < len; i++) {
+				if (arr[i] == id) {
+					document.getElementById(arr[i]).style.display="grid";
+				}
+
+				else {
+					document.getElementById(arr[i]).style.display="none";
+				}	
+			}
+			return false;
+		}
+
+		function alrt() {
+			alert("login, please");
+		}
+	</script>
+	<div class="shop-categories">
+		<h3>Categories</h3>
+		<ul>
+			<li><a href="#" onclick="showDiv('frt'); return false;">Fruits</a></li>
+			<li><a href="#" onclick="showDiv('flr'); return false;">Flowers</a></li>
+			<li><a href="#" onclick="showDiv('vgtbl'); return false;">Vegetables</a></li>
+			<li><a href="#" onclick="showDiv('mdcnl'); return false;">Medicinal</a></li>
+			<li><a href="#" onclick="showDiv('dcrtv'); return false;">Decorative</a></li>
+		</ul>
+	</div>
+
+	<!-- footer -->
+	<footer class="text-center py-4">
+		<div class="container py-xl-5 py-4">
+			<h3 class="text-da let mb-3">We Provide Best Services</h3>
+			<p class="footer-para mx-auto">Come Buy plants we will be helping you in the 
+				gardening by giving tips.Plant for the future.</p>
+			<!-- logo -->
+			<h2 class="logo2 text-center mt-3">
+				<a href="index.html">
+					Plantme<i class="fa fa-pagelines" aria-hidden="true"></i>
+				</a>
+			</h2>
+			<!-- //logo -->
+			<!-- address -->
+			<div class="contact-left-footer mt-4">
+				<h6 class="text-da let mb-3">Contact us for any enquiry ,We will be happy to help</h6>
+				<ul>
+					<li>
+						<p>
+							<i class="fa fa-map-marker mr-2"></i>Salagame Road, Hassan
+						</p>
+					</li>
+					<li class="mx-4">
+						<p>
+							<i class="fa fa-phone mr-2"></i>+91 8971878336
+						</p>
+					</li>
+					<li>
+						<p class="text-wh">
+							<i class="fa fa-envelope-open mr-2"></i>
+							<a href="mailto:info@example.com">plantme@gmail.com</a>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<!-- //address -->
+			<!-- social icons -->
+			<div class="footercopy-social mt-4">
+				<ul>
+					<li>
+						<a href="#">
+							<span class="fa fa-facebook-f"></span>
+						</a>
+					</li>
+					<li class="mx-2">
+						<a href="#">
+							<span class="fa fa-twitter"></span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="fa fa-rss"></span>
+						</a>
+					</li>
+					<li class="ml-2">
+						<a href="#">
+							<span class="fa fa-vk"></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- //social icons -->
+		</div>
+	</footer>
+	<!-- //footer -->
+
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="{% static 'js/cart.js' %}"></script>
+
+</body>
+
+</html>

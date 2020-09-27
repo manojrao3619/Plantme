@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+
+<head>
+	<title>Plantme</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Plantme" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--// Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Custom-Files -->
+	<link rel="stylesheet" href= "{% static 'css/bootstrap.css' %}">
+	<!-- Bootstrap-Core-CSS -->
+	<link href="{% static 'css/css_slider.css' %}" type="text/css" rel="stylesheet" media="all">
+	<!-- banner slider -->
+	<link rel="stylesheet" href="{%static 'css/style.css' %}" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+	<!-- Font-Awesome-Icons-CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- //Custom-Files -->
+
+	<!-- Web-Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"
+	 rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Niconne&amp;subset=latin-ext" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
+	 rel="stylesheet">
+	<!-- //Web-Fonts -->
+</head>
+
+<body>
+	<div id="home">
+		<!-- header -->
+		<header class="header-style fixed-top">
+			<div class="container">
+				<div class="header d-lg-flex justify-content-between align-items-center">
+					<!-- logo -->
+					<h1 class="logo text-center">
+						<a href="/">Plantme<i class="fa fa-pagelines" aria-hidden="true"></i>
+						</a>
+					</h1>
+					<!-- //logo -->
+					<!-- nav -->
+					<div class="nav_w3ls">
+						<nav>
+							<ul class="menu">
+								<li class="active ml-0"><a href="/">Home</a></li>
+								<li><a href="/about">About Us</a></li>
+								<li><a href="/products">Products</a></li>
+								<li class="mr-0"><a href="/contact">Contact Us</a></li>
+							</ul>
+							
+						</nav>
+	
+					</div>
+
+					<div style="position: absolute; top: 20px; left: 5px;">
+						{% if user.is_authenticated %}
+							<h3>Welcome, {{ user }} </h3	>
+						{% endif %}
+					</div>
+					
+				</div>
+			</div>
+		</header>
+		<!-- //header -->
+	</div>
+	<!-- //main -->
+
+	<!-- modal -->
+
+	<!-- about -->
+	<section class="about" id="about" style="margin-top: 150px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 about-left-w3pvt offset-lg-1">
+					<div class="main-img">
+						<img src="{% static 'images/ab.jpg' %}" alt="" class="img-fluid pos-aboimg">
+						<img src="{% static 'images/ab2.jpg' %}" alt="" class="img-fluid pos-aboimg2">
+					</div>
+				</div>
+				<div class="col-lg-6 about-right offset-lg-1">
+					<h4 class="sub-tittle-w3layouts let">About Us</h4>
+					<h3 class="tittle-w3layouts text-uppercase pr-lg-5 mt-2">Duis aute irure olor in cillum solore</h3>
+					<p class="mt-4 mb-5">Lorem ipsum dolor sit amet Neque porro quisquam est qui dolorem Lorem int ipsum dolor sit
+						amet
+						when an unknown printer took a galley of type.Vivamus id tempor felis.</p>
+					<ul class="author list-unstyled d-flex">
+						<li><img class="img-fluid rounded-circle" src="images/te1.jpg" alt=""></li>
+						<li class="ml-4 mt-4"><span>Admin Name</span>Comany Name</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- //about -->
+
+
+	<!-- services -->
+  <div class="serives-agile py-5" id="services">
+    <div class="container py-xl-5 py-lg-3">
+      <div class="row support-bottom text-center">
+        <div class="col-md-4 services-w3ls-grid">
+          <i class="fa fa-envira" aria-hidden="true"></i>
+          <h4 class="text-wh text-uppercase mt-md-5 mt-4 mb-3">Garden Care</h4>
+          <p>Ut enim ad minima veniam, quis nostrum ullam corporis suscipit laboriosam.</p>
+        </div>
+        <div class="col-md-4 services-w3ls-grid my-md-0 my-4">
+          <i class="fa fa-tree" aria-hidden="true"></i>
+          <h4 class="text-wh text-uppercase mt-md-5 mt-4 mb-3">Plant Renovation</h4>
+          <p>Ut enim ad minima veniam, quis nostrum ullam corporis suscipit laboriosam.</p>
+        </div>
+        <div class="col-md-4 services-w3ls-grid">
+          <i class="fa fa-pagelines" aria-hidden="true"></i>
+          <h4 class="text-wh text-uppercase mt-md-5 mt-4 mb-3">Always Fresh</h4>
+          <p>Ut enim ad minima veniam, quis nostrum ullam corporis suscipit laboriosam.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //services -->
+
+  <!-- why -->
+  <section class="blog_w3ls pb-5" id="why" style="margin-top: 50px;">
+    <div class="container pb-xl-5 pb-lg-3">
+      <h3 class="w3ls-title text-da text-center font-weight-bold mb-5 pb-lg-4">Why <span class="font-weight-light">Choose
+          Us</span></h3>
+      <div class="row">
+        <!-- blog grid -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card border-0 med-blog">
+            <div class="card-header p-0">
+              <a href="single.html">
+                <img class="card-img-bottom" src="{% static 'images/wh1.jpg' %}" alt="Card image cap">
+              </a>
+            </div>
+            <div class="card-body border border-top-0">
+              <div class="mb-3">
+                <h5 class="blog-title card-title m-0">Quality Products
+                </h5>
+                <div class="blog_w3icon">
+                  <span>
+                    Magna Kictum - loremipsum</span>
+                </div>
+              </div>
+              <p>Cras ultricies ligula sed magna dictum porta auris blandita.</p>
+            </div>
+          </div>
+        </div>
+        <!-- //blog grid -->
+        <!-- blog grid -->
+        <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
+          <div class="card border-0 med-blog">
+            <div class="card-header p-0">
+              <a href="single.html">
+                <img class="card-img-bottom" src="{% static 'images/wh2.jpg' %}" alt="Card image cap">
+              </a>
+            </div>
+            <div class="card-body border border-top-0">
+              <div class="mb-3">
+                <h5 class="blog-title card-title m-0">Work Smart
+                </h5>
+                <div class="blog_w3icon">
+                  <span>
+                    Magna Kictum - loremipsum</span>
+                </div>
+              </div>
+              <p>Cras ultricies ligula sed magna dictum porta auris blandita.</p>
+            </div>
+          </div>
+        </div>
+        <!-- //blog grid -->
+        <!-- blog grid -->
+        <div class="col-lg-4 col-md-6 mt-lg-0 mt-5">
+          <div class="card border-0 med-blog">
+            <div class="card-header p-0">
+              <a href="single.html">
+                <img class="card-img-bottom" src="{% static 'images/wh3.jpg' %}" alt="Card image cap">
+              </a>
+            </div>
+            <div class="card-body border border-top-0">
+              <div class="mb-3">
+                <h5 class="blog-title card-title m-0">Excellent Services
+                </h5>
+                <div class="blog_w3icon">
+                  <span>
+                    Magna Kictum - loremipsum</span>
+                </div>
+              </div>
+              <p>Cras ultricies ligula sed magna dictum porta auris blandita.</p>
+            </div>
+          </div>
+        </div>
+        <!-- //blog grid -->
+      </div>
+    </div>
+  </section>
+  <!-- //why -->
+
+  <!-- stats-->
+  <div class="stats-info py-5">
+    <div class="container py-xl-5 py-lg-3">
+      <h4 class="stat-text-wthree text-wh mx-auto text-center font-italic mb-sm-5 mb-4">We give you Care tips and Ideas on
+        what style suits your garden</h4>
+    </div>
+  </div>
+  <!-- //stats -->
+
+	<!-- footer -->
+	<footer class="text-center py-4">
+		<div class="container py-xl-5 py-4">
+			<h3 class="text-da let mb-3">We Provide Best Services</h3>
+			<p class="footer-para mx-auto">We have all type of plants ,plant-seeds and gardening tools come and explore yourseves.
+									plant for the future</p>
+			<!-- logo -->
+			<h2 class="logo2 text-center mt-3">
+				<a href="index.html">
+					Plantme<i class="fa fa-pagelines" aria-hidden="true"></i>
+				</a>
+			</h2>
+			<!-- //logo -->
+			<!-- address -->
+			<div class="contact-left-footer mt-4">
+				<h6 class="text-da let mb-3">Plantme where your gardening items come at one place.</h6>
+				<ul>
+					<li>
+						<p>
+							<i class="fa fa-map-marker mr-2"></i>Salagame Road, Hassan
+						</p>
+					</li>
+					<li class="mx-4">
+						<p>
+							<i class="fa fa-phone mr-2"></i>+91 8971878336
+						</p>
+					</li>
+					<li>
+						<p class="text-wh">
+							<i class="fa fa-envelope-open mr-2"></i>
+							<a href="mailto:info@example.com">plantme@gmail.com</a>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<!-- //address -->
+			<!-- social icons -->
+			<div class="footercopy-social mt-4">
+				<ul>
+					<li>
+						<a href="#">
+							<span class="fa fa-facebook-f"></span>
+						</a>
+					</li>
+					<li class="mx-2">
+						<a href="#">
+							<span class="fa fa-twitter"></span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="fa fa-rss"></span>
+						</a>
+					</li>
+					<li class="ml-2">
+						<a href="#">
+							<span class="fa fa-vk"></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- //social icons -->
+		</div>
+	</footer>
+	<!-- //footer -->
+</body>
+
+</html>

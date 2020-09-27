@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+
+<head>
+	<title>Plantme</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Plantme" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--// Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<!-- Custom-Files -->
+	<link rel="stylesheet" href= "{% static 'css/bootstrap.css' %}">
+	<link href="{% static 'css/checkout.css' %}" type="text/css" rel="stylesheet" media="all">
+	<!-- Bootstrap-Core-CSS -->
+	<link href="{% static 'css/css_slider.css' %}" type="text/css" rel="stylesheet" media="all">
+	<!-- banner slider -->
+	<link rel="stylesheet" href="{%static 'css/style.css' %}" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+	<!-- Font-Awesome-Icons-CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- //Custom-Files -->
+
+	<!-- Web-Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"
+	 rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Niconne&amp;subset=latin-ext" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
+	 rel="stylesheet">
+
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+	<!-- //Web-Fonts -->
+</head>
+
+<body>
+	<script>
+		var obj = sessionStorage.getItem('shoppingCart');
+		var tot = sessionStorage.getItem('totalPrice');
+		var now = new Date();
+		var time = now.getTime();
+		var expireTime = time + 1000*60;
+		now.setTime(expireTime);
+		document.cookie = 'myObj=' + obj + ';expires=' + now.toUTCString();
+		document.cookie = 'tot=' + tot + ';expires=' + now.toUTCString();
+	</script>
+	<div id="home">
+		<!-- header -->
+		<header class="header-style fixed-top">
+			<div class="container">
+				<div class="header d-lg-flex justify-content-between align-items-center">
+					<!-- logo -->
+					<h1 class="logo text-center">
+						<a href="/">Plantme<i class="fa fa-pagelines" aria-hidden="true"></i>
+						</a>
+					</h1>
+					<!-- //logo -->
+					<!-- nav -->
+					<div class="nav_w3ls">
+						<nav>
+							<ul class="menu">
+								<li class="active ml-0"><a href="/">Home</a></li>
+								<li><a href="/#about">About Us</a></li>
+								<li><a href="/products">Products</a></li>
+								<li class="mr-0"><a href="/contact">Contact Us</a></li>
+							</ul>
+							
+						</nav>
+
+						
+					</div>
+
+					<div style="position: absolute; top: 20px; left: 5px;">
+						{% if user.is_authenticated %}
+							<h3>Welcome, {{ user }} </h3	>
+						{% endif %}
+					</div>
+
+
+					<!-- //nav -->
+				</div>
+			</div>
+		</header>
+		<!-- //header -->
+
+
+
+	</div>
+	<!-- //main -->
+
+	 <!--checkout-->
+    <section class="checkout_wthree py-sm-5 py-3" style="margin-top: 150px;">
+        <div class="container">
+            <div class="check_w3ls">
+                <div class="d-sm-flex justify-content-between mb-4">
+                    <h4>review your order
+                    </h4>
+
+                </div>
+
+                <div class="checkout-right">
+                    <table class=" show-checkout timetable_sub">
+                    	
+                    </table>
+                    <h5 >Total: ₹<span id="total"> </span></h5>
+                    <form method="POST" action="."> {% csrf_token %}
+                    	<button type="submit" class="submit check_out" onclick="confirm();">place order</button>
+                    </form>
+                    
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--//checkout-->
+	
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script>
+		function displayCheckout(){
+
+			cart = []
+			cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
+
+			var output = "";
+			output += "<thread>"
+			     + "<tr>"
+				 + "<th>Sl No</th>"
+				 + "<th>Product</th>"
+				 + "<th>Quantity</th>"
+				 + "<th>Product Name</th>"
+				 + "<th>Price</th>"
+				 +   "</tr>"
+				 + "</thread>"
+				 + "<tbody>";
+
+			
+			for(i = 0; i < cart.length; i++) {
+				output += "<tr class='rem1'>"
+				 +"<td class='invert'>" + (i+1) + "</td>"
+				 +"<td class='invert-image'>"
+				 +"<img src='{% static 'images/g1.jpg' %}' alt='image' class='img-responsive' style='height: 100px;'>"
+				 +"</td>"
+				 +"<td class='invert'>"
+				 +"<div class='quantity'>"
+				 +"<div class='quantity-select'>"
+				 // +"<div class='entry value-minus'>&nbsp;</div>"
+				 +"<div class='entry value'>"
+				 +"<span>" + cart[i].count + "</span>"
+				 +"</div>"
+				 // +"<div class='entry value-plus active'>&nbsp;</div>"
+				 +"</div>"
+				 +"</div>"
+				 +"</td>"
+				 +"<td class='invert'>" + cart[i].name + "</td>"
+
+				 +"<td class='invert'>" + cart[i].price + "</td>"
+				 +"</tr>";
+			}
+
+			output += "</tbody>";
+			
+			$('.show-checkout').html(output);
+		}
+
+		displayCheckout();
+
+		function displayTotal() {
+    		var total_price = JSON.parse(sessionStorage.getItem('totalPrice'));
+    		$('#total').html(total_price);
+    		// sessionStorage.setItem('totalPrice', JSON.stringify(total_price));
+		}
+
+		displayTotal();
+
+		function confirm(){
+    		// sessionStorage.setItem('totalPrice', JSON.stringify(total_price));
+			alert("Your booking has been confirmed.A reference no has been sent to your phone.");
+			sessionStorage.clear();
+		}
+
+	</script>
+	<!-- footer -->
+	<footer class="text-center py-4">
+		<div class="container py-xl-5 py-4">
+			<h3 class="text-da let mb-3">We Provide Best Services</h3>
+			<p class="footer-para mx-auto">Natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam
+				doloremque laudantium, totam rem aperiam</p>
+			<!-- logo -->
+			<h2 class="logo2 text-center mt-3">
+				<a href="index.html">
+					Plantme<i class="fa fa-pagelines" aria-hidden="true"></i>
+				</a>
+			</h2>
+			<!-- //logo -->
+			<!-- address -->
+			<div class="contact-left-footer mt-4">
+				<h6 class="text-da let mb-3">Sed do eiusmod tempor incididunt ut labore et dolore</h6>
+				<ul>
+					<li>
+						<p>
+							<i class="fa fa-map-marker mr-2"></i>Salagame Road, Hassan
+						</p>
+					</li>
+					<li class="mx-4">
+						<p>
+							<i class="fa fa-phone mr-2"></i>+91 8971878336
+						</p>
+					</li>
+					<li>
+						<p class="text-wh">
+							<i class="fa fa-envelope-open mr-2"></i>
+							<a href="mailto:info@example.com">plantme@gmail.com</a>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<!-- //address -->
+			<!-- social icons -->
+			<div class="footercopy-social mt-4">
+				<ul>
+					<li>
+						<a href="#">
+							<span class="fa fa-facebook-f"></span>
+						</a>
+					</li>
+					<li class="mx-2">
+						<a href="#">
+							<span class="fa fa-twitter"></span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="fa fa-rss"></span>
+						</a>
+					</li>
+					<li class="ml-2">
+						<a href="#">
+							<span class="fa fa-vk"></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- //social icons -->
+		</div>
+	</footer>
+	<!-- //footer -->
+
+	<!-- move top icon -->
+	<a href="#home" class="move-top text-center"></a>
+	<!-- //move top icon -->
+
+</body>
+
+</html>

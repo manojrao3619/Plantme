@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+
+<head>
+	<title>PlantMe</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Plantme" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--// Meta tag Keywords -->
+
+	<!-- Custom-Files -->
+	<link rel="stylesheet" href= "{% static 'css/bootstrap.css' %}">
+	<!-- Bootstrap-Core-CSS -->
+	<link href="{% static 'css/css_slider.css' %}" type="text/css" rel="stylesheet" media="all">
+	<!-- banner slider -->
+	<link rel="stylesheet" href="{%static 'css/style.css' %}" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+	<!-- Font-Awesome-Icons-CSS -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+	<!-- //Custom-Files -->
+
+	<!-- Web-Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"
+	 rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Niconne&amp;subset=latin-ext" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
+	 rel="stylesheet">
+	<!-- //Web-Fonts -->
+</head>
+
+<body>
+	<div id="home">
+		<!-- header -->
+		<header class="header-style fixed-top">
+			<div class="container">
+				<div class="header d-lg-flex justify-content-between align-items-center">
+					<!-- logo -->
+					<h1 class="logo text-center">
+						<a href="index.html">Plantme<i class="fa fa-pagelines" aria-hidden="true"></i>
+						</a>
+					</h1>
+					<!-- //logo -->
+					<!-- nav -->
+					<div class="nav_w3ls">
+						<nav>
+							<ul class="menu">
+								<!-- <li></li> -->
+								<li ><a href="/">Home</a></li>
+								<li><a href="/about">About Us</a></li>
+								<li><a href="/products">Products</a></li>						
+								<li class="active ml-0"><a href="/contact">Contact Us</a></li>
+							</ul>
+							
+						</nav>
+
+						
+					</div>
+
+					
+
+					
+					<!-- //nav -->
+				</div>
+			</div>
+		</header>
+		<!-- //header -->
+	
+	<!-- contact -->
+	<section class="contact py-5" id="contact">
+		<div class="container py-xl-5 py-lg-3">
+			<h3 class="w3ls-title text-wh text-center font-weight-bold mb-5">Contact <span class="font-weight-light">Us</span></h3>
+			<div class="row contact-form">
+				<div class="offset-lg-2"></div>
+				<div class="col-lg-8 wthree-form-left">
+					<!-- contact form grid -->
+					<fieldset class="contact-top1" data-blast="borderColor">
+						<legend class="text-wh let text-capitalize">send us a note</legend>
+						<form action="." method="POST" class="f-color">{% csrf_token %}
+							<div class="form-group">
+								<label for="contactusername">Name</label>
+								<input type="text" class="form-control" name="name" id="contactusername" required placeholder="Enter your name">
+							</div>
+							<div class="form-group">
+								<label for="contactemail">Email</label>
+								<input type="email" class="form-control" name="email" id="contactemail" required placeholder="Enter your Email">
+							</div>
+							<div class="form-group">
+								<label for="contactcomment">Your Message</label>
+								<textarea class="form-control" rows="5" name="message" id="contactcomment" required placeholder="your message"></textarea>
+							</div>
+							<button type="submit" class="btn btn-block" data-blast="bgColor">Send</button>
+						</form>
+					</fieldset>
+					<!--  //contact form grid ends here -->
+
+				</div>
+				<div class="offset-lg-2"></div>
+			</div>
+			<!-- contact address -->
+			<div class="row address bg-li">
+				<div class="col-lg-4 address-grid">
+					<div class="row address-info">
+						<div class="col-md-3 col-4 address-left text-lg-center text-sm-right text-center">
+							<i class="fa fa-envelope"></i>
+						</div>
+						<div class="col-md-9 col-8 address-right">
+							<p>
+								<a href="mailto:example@email.com"> mail 1@example.com</a>
+							</p>
+							<p>
+								<a href="mailto:example@email.com"> mail 2@example.com</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 address-grid my-lg-0 my-4">
+					<div class="row address-info">
+						<div class="col-md-3 col-4 address-left text-lg-center text-sm-right text-center">
+							<i class="fa fa-phone"></i>
+						</div>
+						<div class="col-md-9 col-8 address-right">
+							<p>+1 234 567 8901</p>
+							<p>+1 567 567 9876</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 address-grid">
+					<div class="row address-info">
+						<div class="col-md-3 col-4 address-left text-lg-center text-sm-right text-center">
+							<i class="fa fa-map"></i>
+						</div>
+						<div class="col-md-9 col-8 address-right">
+							<p> Salagame Road, Hassan</p>
+							<p> Karnataka, India</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //contact address -->
+		</div>
+	</section>
+	<!-- //contact -->
+
+	<!-- footer -->
+	<footer class="text-center py-4">
+		<div class="container py-xl-5 py-4">
+			<h3 class="text-da let mb-3">We Provide Best Services</h3>
+			<p class="footer-para mx-auto">We have all type of plants ,plant-seeds and gardening tools come and explore yourseves.
+									plant for the future</p>
+			<!-- logo -->
+			<h2 class="logo2 text-center mt-3">
+				<a href="index.html">
+					Plantme<i class="fa fa-pagelines" aria-hidden="true"></i>
+				</a>
+			</h2>
+			<!-- //logo -->
+			<!-- address -->
+			<div class="contact-left-footer mt-4">
+				<h6 class="text-da let mb-3">Plantme where your gardening items come at one place.</h6>
+				<ul>
+					<li>
+						<p>
+							<i class="fa fa-map-marker mr-2"></i>Salagame Road, Hassan
+						</p>
+					</li>
+					<li class="mx-4">
+						<p>
+							<i class="fa fa-phone mr-2"></i>+91 8971878336
+						</p>
+					</li>
+					<li>
+						<p class="text-wh">
+							<i class="fa fa-envelope-open mr-2"></i>
+							<a href="mailto:info@example.com">plantme@gmail.com</a>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<!-- //address -->
+			<!-- social icons -->
+			<div class="footercopy-social mt-4">
+				<ul>
+					<li>
+						<a href="#">
+							<span class="fa fa-facebook-f"></span>
+						</a>
+					</li>
+					<li class="mx-2">
+						<a href="#">
+							<span class="fa fa-twitter"></span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="fa fa-rss"></span>
+						</a>
+					</li>
+					<li class="ml-2">
+						<a href="#">
+							<span class="fa fa-instagram"></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- //social icons -->
+		</div>
+	</footer>
+	<!-- //footer -->
+
+</body>
+
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+
+<head>
+	<title>Plantme</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Plantme" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--// Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+	<!-- Custom-Files -->
+	<link rel="stylesheet" href= "{% static 'css/bootstrap.css' %}">
+	<!-- Bootstrap-Core-CSS -->
+	<link href="{% static 'css/css_slider.css' %}" type="text/css" rel="stylesheet" media="all">
+	<!-- banner slider -->
+	<link rel="stylesheet" href="{%static 'css/style.css' %}" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+	<!-- Font-Awesome-Icons-CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- //Custom-Files -->
+
+	<!-- Web-Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"
+	 rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Niconne&amp;subset=latin-ext" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
+	 rel="stylesheet">
+	<!-- //Web-Fonts -->
+</head>
+
+<body>
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+	<div class="modal fade" id="myModal1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">					      
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header" style="padding:35px 50px;">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"><span class="glyphicon glyphicon-lock"></span> Login</h4>
+				</div>
+				<div class="modal-body" style="padding:40px 50px;">
+					<form name="login" role="form" method="POST"> {% csrf_token %}
+						<div class="form-group" >
+						    <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+						    <input type="text" class="form-control" name="username" placeholder="Enter username">
+						</div>
+
+						<div class="form-group">
+							<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+						    <input type="password" class="form-control" name="password" placeholder="Enter password" >
+						</div>
+						<button id="lgnbtn" name="login" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+						
+						{% if messages %}
+							{% for message in messages %}
+								<div class="form-group">
+									<p> {{ message }} </p>
+								</div>
+							{% endfor %}
+						{% endif %}
+					</form>
+				</div>
+
+				<div class="modal-footer">
+					<p>Not a member? <a id = "lnk1" href="#">Sign Up</a></p>
+					<p>Forgot <a href="#">Password?</a></p>
+				</div>
+			</div>
+					        
+		</div>
+	</div>
+
+	{% block content %}
+	<div class="modal fade" id="myModal2" role="dialog">
+		<div class="modal-dialog">
+					      
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header" style="padding:35px 50px;">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4><span class="glyphicon glyphicon-lock"></span> Sign Up</h4>
+				</div>
+
+				<div class="modal-body" style="padding:40px 50px;">
+					<form name="signup" role="form" action="" method="POST">{% csrf_token %}
+						<div class="form-group">
+							<label for="firstname"> First Name</label>
+							<input type="text" class="form-control" name="first_name" placeholder="Enter first name">
+						</div>
+
+						<div class="form-group">
+							<label for="lstname"> Last Name</label>
+							<input type="text" class="form-control" name="last_name" placeholder="Enter last name">
+						</div>
+
+						<div class="form-group">
+							<label for="usrname"> Username</label>
+							<input type="text" class="form-control" name="username" placeholder="Enter desired username">
+						</div>
+
+						<div class="form-group">
+							<label for="email"> Email</label>
+							<input type="text" class="form-control" name="email" placeholder="Enter email">
+						</div>
+
+						<div class="form-group">
+							<label for="phone"> Phone No</label>
+							<input type="text" class="form-control" name="phone" placeholder="Enter Phone No">
+						</div>
+
+						<div class="form-group">
+							<label for="psw"> Password</label>
+							<input type="password" class="form-control" id="password1" name="password1" placeholder="Enter password" minlength="8">
+						</div>
+
+						<div class="form-group">
+							<label for="psw"> Confirm Password</label>
+							<input type="password" class="form-control" id="password2"
+							name="password2" placeholder="Re-Enter password" minlength="8">
+						</div>
+
+						<script>
+					        window.onload = function () {
+					            document.getElementById("password1").onchange = validatePassword;
+					            document.getElementById("password2").onchange = validatePassword;
+					        }
+
+					        function validatePassword() {
+					            var pass2 = document.getElementById("password2").value;
+					            var pass1 = document.getElementById("password1").value;
+					            if (pass1 != pass2)
+					                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+					            else
+					                document.getElementById("password2").setCustomValidity('');
+					            //empty string means no validation error
+					        }
+					    </script>
+
+						<button id="snpbtn" name="signup" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Sign Up</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<p>Already a member? <a id="lnk2" href="#">Login</a></p>
+				</div>
+			</div>
+					        
+		</div>
+	</div> <!-- end modal -->
+	{% endblock %}
+
+	<script>
+		$(document).ready(function(){
+
+			$("#myModal1").on('hidden.bs.modal', function(){
+				const scrollY = document.body.style.top;
+				document.body.style.position = '';
+				document.body.style.top = '';
+				window.scrollTo(0, parseInt(scrollY || '0') * -1);
+			});
+
+			$("#myModal2").on('hidden.bs.modal', function(){
+				const scrollY = document.body.style.top;
+				document.body.style.position = '';
+				document.body.style.top = '';
+				window.scrollTo(0, parseInt(scrollY || '0') * -1);
+			});
+
+
+			$("#myBtn1").click(function(){
+				document.body.style.position = 'fixed';
+				document.body.style.top = `-${window.scrollY}px`;
+				$("#myModal1").modal();
+				$("#myModal2").modal("hide");
+			});
+
+			$("#myBtn2").click(function(){
+				document.body.style.position = 'fixed';
+				document.body.style.top = `-${window.scrollY}px`;
+				$("#myModal2").modal();
+				$("#myModal1").modal("hide");
+			});
+
+			$("#lnk1").click(function(){
+				document.body.style.position = 'fixed';
+				document.body.style.top = `-${window.scrollY}px`;
+				$("#myModal2").modal();
+				$("#myModal1").modal("hide");
+			});
+
+			$("#lnk2").click(function(){
+				document.body.style.position = 'fixed';
+				document.body.style.top = `-${window.scrollY}px`;
+				$("#myModal1").modal();
+				$("#myModal2").modal("hide");
+			}); 	
+		});
+	</script>
+
+
+	<div id="home">
+		<!-- header -->
+		<header class="header-style fixed-top">
+			<div class="container">
+				<div class="header d-lg-flex justify-content-between align-items-center">
+					<!-- logo -->
+					<h1 class="logo text-center">
+						<a href="/">Plantme<i class="fa fa-pagelines" aria-hidden="true"></i>
+						</a>
+					</h1>
+					<!-- //logo -->
+					<!-- nav -->
+					<div class="nav_w3ls">
+						<nav>
+							<ul class="menu">
+								<li class="active ml-0"><a href="/">Home</a></li>
+								<li><a href="/about">About Us</a></li>
+								<li><a href="/products">Products</a></li>
+								<li class="mr-0"><a href="/contact">Contact Us</a></li>
+							</ul>
+							
+						</nav>
+
+						
+					</div>
+
+					
+					<!-- //nav -->
+					
+					<div style="position: absolute; top: 20px; left: 5px;">
+						{% if user.is_authenticated %}
+							<h1>Welcome, {{ user }} </h1>
+						{% endif %}
+					</div>
+
+					<div class="header__top__right__auth" >	
+						{% if user.is_authenticated %}
+							<form name="logout" action="." method="POST"> {% csrf_token %}
+								<button class="btn btn-danger" name="logout"  type="submit" style="width: 80px; height: 30px;"><i class="fa fa-user"> Logout</i> </button>
+							</form>
+							
+						{% else %}
+							<button class="btn btn-primary"id="myBtn1" style="width: 80px; height: 30px;"><i class="fa fa-user"> Login</i> </button>
+						{% endif %}
+					</div>
+
+				</div>
+			</div>
+		</header>
+		<!-- //header -->
+
+		<!-- banner -->
+		<div class="banner_w3lspvt">
+			<div class="csslider infinity" id="slider1">
+				<input type="radio" name="slides" checked="checked" id="slides_1" />
+				<input type="radio" name="slides" id="slides_2" />
+				<input type="radio" name="slides" id="slides_3" />
+				<input type="radio" name="slides" id="slides_4" />
+				<ul>
+					<li>
+						<div class="banner-top">
+							<div class="container">
+								<div class="w3layouts-banner-info text-center">
+									<h3 class="text-wh">Welcome to PlantMe</h3>
+									<p class="text-li mx-auto mt-2">We have all type of plants ,plant-seeds and gardening tools come and explore yourseves.
+									plant for the future</p>
+									<a href="/about" class="button-style scroll mt-sm-5 mt-4">Read More</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner-top1">
+							<div class="container">
+								<div class="w3layouts-banner-info text-center">
+									<h3 class="text-wh">Plants For Healthy</h3>
+									<p class="text-li mx-auto mt-2">Plantme where your gardening items come at one place.</p>
+									<a href="/about" class="button-style scroll mt-sm-5 mt-4">Read More</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner-top2">
+							<div class="container">
+								<div class="w3layouts-banner-info text-center">
+									<h3 class="text-wh">Welcome to PlantMe</h3>
+									<p class="text-li mx-auto mt-2">We also give ideas and tips for gardening.Plant for the future</p>
+									<a href="/about" class="button-style scroll mt-sm-5 mt-4">Read More</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner-top3">
+							<div class="container">
+								<div class="w3layouts-banner-info text-center">
+									<h3 class="text-wh">Plants For Healthy</h3>
+									<p class="text-li mx-auto mt-2">We will be without tress so come and lets plant together.</p>
+									<a href="/about" class="button-style scroll mt-sm-5 mt-4">Read More</a>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="arrows">
+					<label for="slides_1"></label>
+					<label for="slides_2"></label>
+					<label for="slides_3"></label>
+					<label for="slides_4"></label>
+				</div>
+			</div>
+		</div>
+		<!-- //banner -->
+	</div>
+	<!-- //main -->
+
+	<!-- modal -->
+		
+	
+
+	<!-- footer -->
+	<footer class="text-center py-4">
+		<div class="container py-xl-5 py-4">
+			<h3 class="text-da let mb-3">We Provide Best Services</h3>
+			<p class="footer-para mx-auto">Come Buy plants we will be helping you in the 
+				gardening by giving tips.Plant for the future.</p>
+			<!-- logo -->
+			<h2 class="logo2 text-center mt-3">
+				<a href="index.html">
+					Plantme<i class="fa fa-pagelines" aria-hidden="true"></i>
+				</a>
+			</h2>
+			<!-- //logo -->
+			<!-- address -->
+			<div class="contact-left-footer mt-4">
+				<h6 class="text-da let mb-3"> Contact us for any enquiry ,We will be happy to help</h6>
+				<ul>
+					<li>
+						<p>
+							<i class="fa fa-map-marker mr-2"></i>Salagame Road, Hassan
+						</p>
+					</li>
+					<li class="mx-4">
+						<p>
+							<i class="fa fa-phone mr-2"></i>+91 8971878336
+						</p>
+					</li>
+					<li>
+						<p class="text-wh">
+							<i class="fa fa-envelope-open mr-2"></i>
+							<a href="mailto:info@example.com">plantme@gmail.com</a>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<!-- //address -->
+			<!-- social icons -->
+			<div class="footercopy-social mt-4">
+				<ul>
+					<li>
+						<a href="#">
+							<span class="fa fa-facebook-f"></span>
+						</a>
+					</li>
+					<li class="mx-2">
+						<a href="#">
+							<span class="fa fa-twitter"></span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="fa fa-rss"></span>
+						</a>
+					</li>
+					<li class="ml-2">
+						<a href="#">
+							<span class="fa fa-vk"></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- //social icons -->
+		</div>
+	</footer>
+	<!-- //footer -->
+
+	<!-- move top icon -->
+	<a href="#home" class="move-top text-center"></a>
+	<!-- //move top icon -->
+
+</body>
+
+</html>
