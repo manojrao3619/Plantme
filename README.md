@@ -1,5 +1,5 @@
 # Plantme
-An online portal for purchasing plants and plant related things.
+### An online portal for purchasing plants and plant related things.
 
 First create a virtual environment,
 
